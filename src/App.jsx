@@ -4,20 +4,24 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
-import About from './pages/About';
-import WorkDetail from './pages/WorkDetail';
-import Portfolio from './pages/Portfolio';
-import Landing from './pages/Landing';
-import Services from './pages/Services';
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
+import InquiryPage from './pages/InquiryPage';
+import AboutPage from './pages/AboutPage';
+import LandingPage from './pages/LandingPage';
+import PortfolioHome from './pages/PortfolioHome';
+import WorkPage from './pages/WorkPage';
 
 function ScreenBar() {
   const loc = useLocation();
   const navs = [
-    { path: '/', label: 'About' },
-    { path: '/workdetail', label: 'WorkDetail' },
-    { path: '/portfolio', label: 'Portfolio' },
-    { path: '/landing', label: 'Landing' },
-    { path: '/services', label: 'Services' }
+    { path: '/', label: 'ServicesPage' },
+    { path: '/contactpage', label: 'ContactPage' },
+    { path: '/inquirypage', label: 'InquiryPage' },
+    { path: '/aboutpage', label: 'AboutPage' },
+    { path: '/landingpage', label: 'LandingPage' },
+    { path: '/portfoliohome', label: 'PortfolioHome' },
+    { path: '/workpage', label: 'WorkPage' }
   ];
 
   return (
@@ -53,12 +57,14 @@ export default function App() {
               <ScreenBar />
               <div className="pt-10 min-h-screen">
                 <Routes>
-                  <Route path='/' element={<About />} />
-        <Route path='/workdetail' element={<WorkDetail />} />
-        <Route path='/portfolio' element={<Portfolio />} />
-        <Route path='/landing' element={<Landing />} />
-        <Route path='/services' element={<Services />} />
-                  <Route path="*" element={<About />} />
+                  <Route path='/' element={<ServicesPage />} />
+        <Route path='/contactpage' element={<ContactPage />} />
+        <Route path='/inquirypage' element={<InquiryPage />} />
+        <Route path='/aboutpage' element={<AboutPage />} />
+        <Route path='/landingpage' element={<LandingPage />} />
+        <Route path='/portfoliohome' element={<PortfolioHome />} />
+        <Route path='/workpage' element={<WorkPage />} />
+                  <Route path="*" element={<ServicesPage />} />
                 </Routes>
               </div>
             </BrowserRouter>

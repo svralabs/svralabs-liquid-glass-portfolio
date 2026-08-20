@@ -1,0 +1,349 @@
+/* Background styles */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: black;
+}
+
+.bgPhoto {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.bgSheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
+  background-size: 200% 200%;
+  animation: sheen 8s ease-in-out infinite;
+}
+
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+}
+
+/* Content container */
+.contentContainer {
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .contentContainer {
+    padding: 2rem;
+  }
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.navLogo {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.navLogoText {
+  font-family: monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: white;
+}
+
+.navBrand {
+  font-family: monospace;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  color: white;
+}
+
+.navBrandSuffix {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navMenu {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.375rem 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .navMenu {
+    display: flex;
+  }
+}
+
+.navMenuLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navMenuLink {
+  border-radius: 9999px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease-in-out;
+}
+
+.navMenuLink:hover {
+  color: white;
+}
+
+.navMenuLinkActive {
+  color: white;
+}
+
+.navContact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: white;
+  transition: transform 0.2s ease-in-out;
+}
+
+.navContact:hover {
+  transform: scale(1.05);
+}
+
+.navContact:active {
+  transform: scale(0.95);
+}
+
+/* Main content */
+.mainContent {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .mainContent {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* Image column */
+.imageColumn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  min-height: 20rem;
+}
+
+@media (min-width: 1024px) {
+  .imageColumn {
+    grid-column: span 5;
+    grid-row: span 2;
+  }
+}
+
+.imageColumnImg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.imageColumnGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1), transparent);
+}
+
+.imageColumnContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem;
+}
+
+.imageColumnLabel {
+  font-family: monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.imageColumnTitle {
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.imageColumnSubtitle {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* About column */
+.aboutColumn {
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .aboutColumn {
+    grid-column: span 7;
+  }
+}
+
+.aboutColumnLabel {
+  font-family: monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.aboutColumnTitle {
+  margin-top: 1rem;
+  font-size: 1.875rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .aboutColumnTitle {
+    font-size: 2.25rem;
+  }
+}
+
+.aboutColumnTitleEmphasis {
+  font-family: monospace;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.aboutColumnText {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.skillsTags {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillTag {
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.375rem 0.625rem;
+  font-family: monospace;
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Timeline column */
+.timelineColumn {
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .timelineColumn {
+    grid-column: span 7;
+  }
+}
+
+.timelineColumnLabel {
+  font-family: monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.timelineItems {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 0.75rem 0;
+}
+
+.timelineItemYear {
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.timelineItemText {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Footer */
+.footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes sheen {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
