@@ -6,10 +6,9 @@ import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
-import InquiryPage from './pages/InquiryPage';
 import AboutPage from './pages/AboutPage';
+import HomePage from './pages/HomePage';
 import LandingPage from './pages/LandingPage';
-import PortfolioHome from './pages/PortfolioHome';
 import WorkPage from './pages/WorkPage';
 
 function ScreenBar() {
@@ -17,10 +16,9 @@ function ScreenBar() {
   const navs = [
     { path: '/', label: 'ServicesPage' },
     { path: '/contactpage', label: 'ContactPage' },
-    { path: '/inquirypage', label: 'InquiryPage' },
     { path: '/aboutpage', label: 'AboutPage' },
+    { path: '/homepage', label: 'HomePage' },
     { path: '/landingpage', label: 'LandingPage' },
-    { path: '/portfoliohome', label: 'PortfolioHome' },
     { path: '/workpage', label: 'WorkPage' }
   ];
 
@@ -59,10 +57,9 @@ export default function App() {
                 <Routes>
                   <Route path='/' element={<ServicesPage />} />
         <Route path='/contactpage' element={<ContactPage />} />
-        <Route path='/inquirypage' element={<InquiryPage />} />
         <Route path='/aboutpage' element={<AboutPage />} />
+        <Route path='/homepage' element={<HomePage />} />
         <Route path='/landingpage' element={<LandingPage />} />
-        <Route path='/portfoliohome' element={<PortfolioHome />} />
         <Route path='/workpage' element={<WorkPage />} />
                   <Route path="*" element={<ServicesPage />} />
                 </Routes>

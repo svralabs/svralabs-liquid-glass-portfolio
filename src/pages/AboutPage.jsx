@@ -1,46 +1,45 @@
 import React from 'react';
-import styles from './AboutPage.module.css';
+import SkillsGrid from '../components/SkillsGrid';
 
-const AboutPage = () => {
-  const skills = ['TypeScript', 'React', 'Node', 'Go', 'Rust', 'Postgres', 'Palette'];
+export default function AboutPage() {
   const timelineItems = [
-    { year: '2026', text: 'Independent — product & platform engineering' },
-    { year: '2023', text: 'Senior engineer, realtime collaboration team' },
-    { year: '2020', text: 'Frontend engineer, design systems' },
-    { year: '2018', text: 'First commit, first startup' }
+    { year: '2026', description: 'Independent — product & platform engineering' },
+    { year: '2023', description: 'Senior engineer, realtime collaboration team' },
+    { year: '2020', description: 'Frontend engineer, design systems' },
+    { year: '2018', description: 'First commit, first startup' }
   ];
 
   return (
-    <div className={styles.pageContainer}>
+    <>
       {/* Background */}
-      <div className={styles.background}>
-        <img alt="" className={styles.bgPhoto} src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
-        <div className={styles.bgSheen}></div>
-        <div className={styles.bgGradient}></div>
+      <div className="fixed inset-0 z-0 bg-black">
+        <img alt="" className="bg-photo h-full w-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+        <div className="bg-sheen absolute inset-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
       </div>
 
       {/* Content */}
-      <div className={styles.contentContainer}>
-        {/* Navigation */}
-        <nav className={styles.nav}>
-          <a className={styles.navLink} href="hero.html">
-            <span className={styles.navLogo}>
-              <span className={styles.navLogoText}>s/</span>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 py-6 lg:px-8 lg:py-8">
+        {/* Nav */}
+        <nav className="flex items-center justify-between">
+          <a className="flex items-center gap-2.5" href="hero.html">
+            <span className="liquid-glass-strong flex h-8 w-8 items-center justify-center rounded-lg">
+              <span className="glass-content font-mono text-sm font-bold tracking-tighter text-white">s/</span>
             </span>
-            <span className={styles.navBrand}>sugi<span className={styles.navBrandSuffix}>.dev</span></span>
+            <span className="font-mono text-lg font-medium tracking-tight text-white">sugi<span className="text-white/50">.dev</span></span>
           </a>
-          <div className={styles.navItems}>
-            <div className={styles.navMenu}>
-              <span className={styles.navMenuLinks}>
-                <a className={styles.navMenuLink} href="hero.html">Home</a>
-                <a className={styles.navMenuLink} href="services.html">Services</a>
-                <a className={styles.navMenuLink} href="work.html">Work</a>
-                <a className={`${styles.navMenuLink} ${styles.navMenuLinkActive}`} href="about.html">About</a>
+          <div className="flex items-center gap-3">
+            <div className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 sm:flex">
+              <span className="glass-content flex items-center gap-1">
+                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="hero.html">Home</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="services.html">Services</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="work.html">Work</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white transition-colors hover:text-white" href="about.html">About</a>
               </span>
             </div>
-            <a className={styles.navContact} href="contact.html">
-              <span className={styles.navContactContent}>
-                <span className="material-symbols-outlined">mail</span>
+            <a className="liquid-glass-strong flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-transform hover:scale-105 active:scale-95" href="contact.html">
+              <span className="glass-content flex items-center gap-2">
+                <span className="material-symbols-outlined h-4 w-4">mail</span>
                 Get in touch
               </span>
             </a>
@@ -48,46 +47,41 @@ const AboutPage = () => {
         </nav>
 
         {/* Main Content */}
-        <main className={styles.mainContent}>
+        <main className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Image Column */}
-          <div className={styles.imageColumn}>
-            <img alt="Workspace" className={styles.imageColumnImg} src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
-            <div className={styles.imageColumnGradient}></div>
-            <div className={styles.imageColumnContent}>
-              <p className={styles.imageColumnLabel}>Based in</p>
-              <p className={styles.imageColumnTitle}>Tokyo, Japan</p>
-              <p className={styles.imageColumnSubtitle}>Working across timezones</p>
+          <div className="liquid-glass relative overflow-hidden rounded-[2rem] lg:col-span-5 lg:row-span-2 min-h-[320px]">
+            <img alt="Workspace" className="img-mono absolute inset-0 h-full w-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+            <div className="glass-content absolute inset-0 flex flex-col justify-end p-7">
+              <p className="font-mono text-xs uppercase tracking-widest text-white/60">Based in</p>
+              <p className="mt-1 text-2xl font-medium text-white">Tokyo, Japan</p>
+              <p className="mt-1 text-xs text-white/50">Working across timezones</p>
             </div>
           </div>
 
           {/* About Column */}
-          <div className={styles.aboutColumn}>
-            <div className={styles.aboutColumnContent}>
-              <p className={styles.aboutColumnLabel}>About</p>
-              <h1 className={styles.aboutColumnTitle}>
-                I build software that feels <span className={styles.aboutColumnTitleEmphasis}>calm and quick.</span>
+          <div className="liquid-glass-strong rounded-[2rem] p-8 lg:col-span-7">
+            <div className="glass-content">
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-white/50">About</p>
+              <h1 className="mt-4 text-3xl leading-snug tracking-[-0.03em] text-white lg:text-4xl">
+                I build software that feels <span className="font-mono italic text-white/70">calm and quick.</span>
               </h1>
-              <p className={styles.aboutColumnText}>
+              <p className="mt-5 text-sm leading-relaxed text-white/60">
                 I've spent the last six years shipping products across startups and studios — equally at home in a design file and a terminal. I care about the details users never notice: the frame that never drops, the state that never gets stuck, the API that just makes sense.
               </p>
-              {/* Skills Tags */}
-              <div className={styles.skillsTags}>
-                {skills.map((skill, index) => (
-                  <span key={index} className={styles.skillTag}>{skill}</span>
-                ))}
-              </div>
+              <SkillsGrid />
             </div>
           </div>
 
           {/* Timeline Column */}
-          <div className={styles.timelineColumn}>
-            <div className={styles.timelineColumnContent}>
-              <p className={styles.timelineColumnLabel}>Timeline</p>
-              <div className={styles.timelineItems}>
+          <div className="liquid-glass rounded-[2rem] p-8 lg:col-span-7">
+            <div className="glass-content">
+              <p className="font-mono text-xs uppercase tracking-widest text-white/60">Timeline</p>
+              <div className="mt-5 flex flex-col divide-y divide-white/10">
                 {timelineItems.map((item, index) => (
-                  <div key={index} className={styles.timelineItem}>
-                    <span className={styles.timelineItemYear}>{item.year}</span>
-                    <span className={styles.timelineItemText}>{item.text}</span>
+                  <div key={index} className="flex items-baseline gap-5 py-3">
+                    <span className="font-mono text-sm text-white/40">{item.year}</span>
+                    <span className="text-sm text-white/85">{item.description}</span>
                   </div>
                 ))}
               </div>
@@ -96,10 +90,8 @@ const AboutPage = () => {
         </main>
 
         {/* Footer */}
-        <p className={styles.footer}>© 2026 sugi.dev — built at 60fps.</p>
+        <p className="mt-10 text-center font-mono text-[11px] text-white/40">© 2026 sugi.dev — built at 60fps.</p>
       </div>
-    </div>
+    </>
   );
-};
-
-export default AboutPage;
+}

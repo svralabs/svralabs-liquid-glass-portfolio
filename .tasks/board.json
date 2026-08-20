@@ -1,23 +1,24 @@
 {
   "project_name": "svralabs-liquid-glass-portfolio",
-  "architecture_summary": "Modular React app. Pages in src/pages/. Shared components in src/components/. CSS modules for styling. React Router v6 for navigation. No state management lib (use React context if needed). Static assets in public/. Build: Vite. Lint: ESLint + Prettier. Test: Vitest (minimal).",
+  "architecture_summary": "Modular React app. Pages in src/pages/. Reusable components in src/components/. Static assets in public/. Tailwind CSS for styling. React Router for navigation. No state management lib (local state sufficient).",
   "tickets": [
     {
       "id": "TASK-001",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Landing page (sugi.dev_landing_page_integrated) to React component",
+      "title": "Create LandingPage component from sugi.dev_landing_page_integrated",
       "source_screen": "sugi.dev_landing_page_integrated",
-      "description": "Convert Stitch HTML to React. Extract hero section, marquee, CTA buttons. Keep exact styling. Use CSS modules. Responsive breakpoints match design.",
+      "description": "Convert Stitch HTML to React. Extract hero section, marquee, CTA buttons. Keep exact visual fidelity. Use Tailwind classes. Static data for now.",
       "target_files": [
         "src/pages/LandingPage.jsx",
-        "src/pages/LandingPage.module.css"
+        "src/components/HeroSection.jsx",
+        "src/components/Marquee.jsx"
       ],
       "acceptance_criteria": [
         "Pixel-perfect match to Stitch screen",
-        "Mobile/desktop responsive",
+        "Responsive (mobile/desktop)",
         "No console errors",
-        "Static props (no API calls)"
+        "Static data hardcoded in component"
       ],
       "status": "DONE"
     },
@@ -25,18 +26,18 @@
       "id": "TASK-002",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Portfolio home (sugi.dev_portfolio_home_final) to React component",
+      "title": "Create HomePage component from sugi.dev_portfolio_home_final",
       "source_screen": "sugi.dev_portfolio_home_final",
-      "description": "Convert Stitch HTML. Extract project grid, filter tabs, pagination. Use CSS Grid for layout. Static data for now (API later).",
+      "description": "Convert Stitch HTML. Include work showcase grid, services preview, about snippet. Extract reusable ProjectCard component. Static data.",
       "target_files": [
-        "src/pages/PortfolioHome.jsx",
-        "src/pages/PortfolioHome.module.css"
+        "src/pages/HomePage.jsx",
+        "src/components/ProjectCard.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match",
-        "Filter tabs functional (no API)",
-        "Responsive grid",
-        "Static data in JSON file"
+        "Exact visual match",
+        "ProjectCard reusable for other screens",
+        "Responsive layout",
+        "Static data in component"
       ],
       "status": "DONE"
     },
@@ -44,18 +45,19 @@
       "id": "TASK-003",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Work/Dev page (sugi.dev_work_final) to React component",
+      "title": "Create WorkPage component from sugi.dev_work_final",
       "source_screen": "sugi.dev_work_final",
-      "description": "Convert Stitch HTML. Extract timeline, skill badges, project cards. Use flexbox for timeline. Static data.",
+      "description": "Convert Stitch HTML. Full project showcase with filtering UI. Extract FilterTabs and ProjectDetail components. Static data.",
       "target_files": [
         "src/pages/WorkPage.jsx",
-        "src/pages/WorkPage.module.css"
+        "src/components/FilterTabs.jsx",
+        "src/components/ProjectDetail.jsx"
       ],
       "acceptance_criteria": [
         "Pixel-perfect match",
-        "Timeline items expand on click",
-        "Responsive layout",
-        "Static data in JSON"
+        "FilterTabs functional (no API, UI only)",
+        "ProjectDetail reusable for modal/dialog later",
+        "Static data in component"
       ],
       "status": "DONE"
     },
@@ -63,18 +65,18 @@
       "id": "TASK-004",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "About page (sugi.dev_about_page) to React component",
+      "title": "Create AboutPage component from sugi.dev_about_page",
       "source_screen": "sugi.dev_about_page",
-      "description": "Convert Stitch HTML. Extract bio text, stats, marquee. Use CSS modules. Static content.",
+      "description": "Convert Stitch HTML. Include bio section, skills grid, experience timeline. Extract SkillsGrid component. Static data.",
       "target_files": [
         "src/pages/AboutPage.jsx",
-        "src/pages/AboutPage.module.css"
+        "src/components/SkillsGrid.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match",
-        "Marquee animation smooth",
-        "Responsive typography",
-        "Static content"
+        "Exact visual match",
+        "SkillsGrid reusable",
+        "Responsive timeline",
+        "Static data in component"
       ],
       "status": "DONE"
     },
@@ -82,18 +84,19 @@
       "id": "TASK-005",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Services page (services_sugi.dev) to React component",
+      "title": "Create ServicesPage component from services_sugi.dev",
       "source_screen": "services_sugi.dev",
-      "description": "Convert Stitch HTML. Extract service cards, pricing table, CTA. Use CSS Grid for cards. Static data.",
+      "description": "Convert Stitch HTML. Service offerings grid, pricing cards, FAQ section. Extract ServiceCard and FAQItem components. Static data.",
       "target_files": [
         "src/pages/ServicesPage.jsx",
-        "src/pages/ServicesPage.module.css"
+        "src/components/ServiceCard.jsx",
+        "src/components/FAQItem.jsx"
       ],
       "acceptance_criteria": [
         "Pixel-perfect match",
-        "Hover effects on cards",
-        "Responsive grid",
-        "Static data in JSON"
+        "ServiceCard reusable",
+        "FAQItem supports expand/collapse",
+        "Static data in component"
       ],
       "status": "DONE"
     },
@@ -101,20 +104,17 @@
       "id": "TASK-006",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Contact & Inquiry pages to React components",
-      "source_screen": "contact_clean_background, project_inquiry_clean_background",
-      "description": "Convert Stitch HTML. Extract forms, input fields, submit buttons. Use HTML5 validation. No backend (formspree or similar later).",
+      "title": "Create ContactPage component from contact_clean_background",
+      "source_screen": "contact_clean_background",
+      "description": "Convert Stitch HTML. Contact form, social links, map placeholder. Form validation (client-side only). Static data for social links.",
       "target_files": [
-        "src/pages/ContactPage.jsx",
-        "src/pages/ContactPage.module.css",
-        "src/pages/InquiryPage.jsx",
-        "src/pages/InquiryPage.module.css"
+        "src/pages/ContactPage.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match",
+        "Exact visual match",
         "Form validation (required fields, email format)",
-        "No console errors",
-        "Static submission handler (log to console)"
+        "No backend submission (log to console)",
+        "Static social links"
       ],
       "status": "DONE"
     },
@@ -122,22 +122,19 @@
       "id": "TASK-007",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Shared components (buttons, badges, footer) to React components",
-      "source_screen": "button_showcase_component_reference, badge_showcase_component_reference, sugidev_collection_footer_section",
-      "description": "Extract reusable components. Buttons: primary/secondary variants. Badges: size/color variants. Footer: links, social icons. Use CSS modules. Props for variants.",
+      "title": "Create reusable UI components from component reference screens",
+      "source_screen": "button_showcase_component_reference,badge_showcase_component_reference,devos_table_components_reference",
+      "description": "Convert Stitch component HTML to reusable React components. Buttons (primary/secondary), badges, tables. Tailwind classes. Prop-based variants.",
       "target_files": [
         "src/components/Button.jsx",
-        "src/components/Button.module.css",
         "src/components/Badge.jsx",
-        "src/components/Badge.module.css",
-        "src/components/Footer.jsx",
-        "src/components/Footer.module.css"
+        "src/components/Table.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match to design",
-        "Props for all variants",
-        "No logic (pure presentational)",
-        "Used in at least 2 pages"
+        "Exact visual match for all variants",
+        "Prop-based customization (size, color, disabled)",
+        "No business logic",
+        "Storybook stories optional (skip if time tight)"
       ],
       "status": "DONE"
     },
@@ -147,24 +144,23 @@
       "model": "hermes-auto",
       "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
       "source_screen": "",
-      "description": "Create app shell. Add navigation bar (match design). Set up React Router v6. Routes: /, /portfolio, /work, /about, /services, /contact, /inquiry. Lazy load pages. 404 page. Dark/light mode toggle (static for now).",
+      "description": "Create main App shell. Navigation bar (mobile/desktop). React Router setup with routes for all pages. 404 page. Footer from sugidev_collection_footer_section. Dark/light mode toggle (UI only).",
       "target_files": [
         "src/App.jsx",
-        "src/App.module.css",
         "src/components/Navbar.jsx",
-        "src/components/Navbar.module.css",
-        "src/pages/NotFound.jsx"
+        "src/components/Footer.jsx",
+        "src/pages/NotFoundPage.jsx"
       ],
       "acceptance_criteria": [
-        "All routes functional",
-        "Active route highlighted in navbar",
-        "Lazy loading works",
-        "404 page matches design",
-        "Dark/light mode toggle visible (no persistence)"
+        "All pages accessible via navigation",
+        "Active route highlighting",
+        "Responsive navbar (mobile menu)",
+        "404 page matches design language",
+        "Dark/light mode toggle (UI only, no persistence)"
       ],
       "status": "DONE"
     }
   ],
   "status": "IN_PROGRESS",
-  "updated_at": "2026-08-20 13:21:22"
+  "updated_at": "2026-08-20 15:07:02"
 }

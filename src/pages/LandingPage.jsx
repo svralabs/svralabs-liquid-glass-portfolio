@@ -1,71 +1,27 @@
 import React from 'react';
-import styles from './LandingPage.module.css';
-
-const navItems = [
-  { name: 'Work', href: '#work', active: true },
-  { name: 'Tech', href: '#tech', active: false },
-  { name: 'Lab', href: '#lab', active: false },
-  { name: 'About', href: '#about', active: false },
-];
-
-const stats = [
-  { label: 'Experience', value: '6+ Years', description: 'Shipping Excellence' },
-  { label: 'Output', value: '40+ Projects', description: 'Concept to Scale' },
-  { label: 'Base', value: 'Tokyo', description: 'GMT+9' },
-];
+import HeroSection from '../components/HeroSection';
+import Marquee from '../components/Marquee';
 
 export default function LandingPage() {
   return (
     <div className="relative min-h-screen">
-      <div className={styles.ambientDrift} />
-      <div className={styles.meshGradient} />
+      <div className="ambient-drift"></div>
+      <div className="fixed inset-0 pointer-events-none mesh-gradient"></div>
 
-      <header className={styles.header}>
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 w-fit rounded-full backdrop-blur-xl bg-white/5 border border-white/15 flex items-center gap-8 px-6 py-3 z-50">
         <div className="font-code-label text-code-label font-bold tracking-tighter text-primary">SUGI</div>
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={`${styles.navLink} ${item.active ? styles.navLinkActive : ''}`}
-            >
-              {item.name}
-            </a>
-          ))}
+          <a className="font-body-sm text-body-sm text-primary font-bold transition-all duration-300 hover:bg-white/10 px-3 py-1 rounded-full" href="#work">Work</a>
+          <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-white/10 px-3 py-1 rounded-full" href="#tech">Tech</a>
+          <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-white/10 px-3 py-1 rounded-full" href="#lab">Lab</a>
+          <a className="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-white/10 px-3 py-1 rounded-full" href="#about">About</a>
         </nav>
-        <button className={styles.ctaButton}>Get in touch</button>
+        <button className="font-body-sm text-body-sm px-4 py-1.5 rounded-full bg-primary text-on-primary font-medium active:scale-95 transition-transform">Get in touch</button>
       </header>
 
-      <main className={styles.main}>
-        <section className={styles.heroSection}>
-          <div className={styles.statusBadge}>
-            <span className={styles.statusText}>Available for Select Engagements</span>
-          </div>
-          <h1 className={styles.headline}>
-            Design-minded <br />
-            <span className="text-on-surface-variant">engineer.</span>
-          </h1>
-          <p className={styles.subheadline}>
-            Specializing in high-performance digital interfaces that bridge the gap between human intuition and technical excellence.
-          </p>
-          <div className={styles.buttonGroup}>
-            <a href="#work" className={styles.primaryButton}>View Portfolio</a>
-            <a href="#about" className={styles.secondaryButton}>My Philosophy</a>
-          </div>
-
-          <div className={styles.statsContainer}>
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`${styles.statItem} ${index === 1 ? styles.borderX : ''}`}
-              >
-                <span className={styles.statLabel}>{stat.label}</span>
-                <span className={styles.statValue}>{stat.value}</span>
-                <span className={styles.statDescription}>{stat.description}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <HeroSection />
+        <Marquee />
       </main>
     </div>
   );
