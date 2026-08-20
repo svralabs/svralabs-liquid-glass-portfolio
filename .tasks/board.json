@@ -1,0 +1,175 @@
+{
+  "project_name": "svralabs-liquid-glass-portfolio",
+  "architecture_summary": "Modular React app. Pages in src/pages/. Shared components in src/components/. CSS modules for styling. React Router v6 for navigation. No state management lib (use React context if needed). Static build with Vite. Mobile-first responsive design.",
+  "tickets": [
+    {
+      "id": "TASK-001",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Landing page (sugi.dev_landing_page_integrated)",
+      "source_screen": "sugi.dev_landing_page_integrated",
+      "description": "Convert Stitch landing page to React. Extract hero section, marquee, showcase cards. Keep exact layout, typography, glass-morphism effects. Use CSS modules for styles.",
+      "target_files": [
+        "src/pages/Landing.jsx",
+        "src/components/HeroSection.jsx",
+        "src/components/Marquee.jsx",
+        "src/components/ShowcaseCard.jsx"
+      ],
+      "acceptance_criteria": [
+        "Pixel-perfect match to Stitch screen",
+        "Responsive: mobile, tablet, desktop",
+        "Glass-morphism effects via CSS backdrop-filter",
+        "No external libs for animations (use native CSS/JS)",
+        "All links functional (placeholder routes OK)"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-002",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Portfolio home (sugi.dev_portfolio_home_final)",
+      "source_screen": "sugi.dev_portfolio_home_final",
+      "description": "Build portfolio grid page. Extract work items, badges, project cards. Reuse ShowcaseCard component from TASK-001. Add filtering logic (all/design/dev).",
+      "target_files": [
+        "src/pages/Portfolio.jsx",
+        "src/components/WorkItem.jsx",
+        "src/components/Badge.jsx"
+      ],
+      "acceptance_criteria": [
+        "Exact match to Stitch layout",
+        "Filtering works (no page reload)",
+        "Hover states match design",
+        "Responsive grid (3 cols desktop, 2 cols tablet, 1 col mobile)",
+        "Data fetched from static JSON (src/data/portfolio.json)"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-003",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "About page (sugi.dev_about_page)",
+      "source_screen": "sugi.dev_about_page",
+      "description": "Convert about page. Extract philosophy text, marquee, devos table. Reuse Marquee component from TASK-001. Build DevosTable component for skills data.",
+      "target_files": [
+        "src/pages/About.jsx",
+        "src/components/DevosTable.jsx"
+      ],
+      "acceptance_criteria": [
+        "Pixel-perfect match",
+        "Marquee animation matches design speed/direction",
+        "DevosTable data from static JSON (src/data/skills.json)",
+        "Responsive: stack table on mobile"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-004",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Services page (services_sugi.dev)",
+      "source_screen": "services_sugi.dev",
+      "description": "Build services page. Extract service cards, project inquiry section. Reuse components from TASK-001/TASK-002. Add contact form (static validation only).",
+      "target_files": [
+        "src/pages/Services.jsx",
+        "src/components/ServiceCard.jsx",
+        "src/components/ContactForm.jsx"
+      ],
+      "acceptance_criteria": [
+        "Exact layout match",
+        "Form validation: required fields, email format",
+        "Form submission logs to console (no backend)",
+        "Responsive: cards stack on mobile"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-005",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Work detail page (sugi.dev_work_final)",
+      "source_screen": "sugi.dev_work_final",
+      "description": "Build work detail page. Extract project header, image gallery, insights section. Add dynamic routing (/work/:id). Fetch data from portfolio.json.",
+      "target_files": [
+        "src/pages/WorkDetail.jsx",
+        "src/components/ProjectGallery.jsx",
+        "src/components/InsightSection.jsx"
+      ],
+      "acceptance_criteria": [
+        "Dynamic route loads correct project data",
+        "Gallery supports swipe gestures (mobile) and arrows (desktop)",
+        "Insights section matches design typography",
+        "404 page if project ID invalid"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-006",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Shared components (button, badge, table)",
+      "source_screen": "button_showcase_component_reference,badge_showcase_component_reference,devos_table_components_reference",
+      "description": "Build reusable components. Extract Button, Badge, DevosTable from reference screens. Support all variants in design (primary/secondary, sizes, colors).",
+      "target_files": [
+        "src/components/Button.jsx",
+        "src/components/Badge.jsx",
+        "src/components/DevosTable.jsx"
+      ],
+      "acceptance_criteria": [
+        "All variants match Stitch screens exactly",
+        "Props for size, color, disabled state",
+        "Accessible: keyboard nav, ARIA labels",
+        "CSS modules for scoped styles"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-007",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Static data and assets",
+      "source_screen": "",
+      "description": "Extract all text, images, icons from Stitch screens. Organize in src/data/ and public/assets/. Create JSON schemas for portfolio, skills, services data.",
+      "target_files": [
+        "src/data/portfolio.json",
+        "src/data/skills.json",
+        "src/data/services.json",
+        "public/assets/images/*",
+        "public/assets/icons/*"
+      ],
+      "acceptance_criteria": [
+        "All images optimized (WebP format, <200KB)",
+        "JSON data matches Stitch content exactly",
+        "Icons in SVG format (inline or file)",
+        "No hardcoded text in components"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-008",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
+      "source_screen": "",
+      "description": "Build app shell. Add navigation bar, footer. Set up React Router with routes: /, /portfolio, /about, /services, /work/:id. Add 404 page. Implement dark/light mode toggle (default: dark).",
+      "target_files": [
+        "src/App.jsx",
+        "src/components/Navbar.jsx",
+        "src/components/Footer.jsx",
+        "src/pages/NotFound.jsx"
+      ],
+      "acceptance_criteria": [
+        "All routes functional",
+        "Active route highlighted in navbar",
+        "Footer matches Stitch design (sugidev_collection_footer_section)",
+        "Dark/light mode persists in localStorage",
+        "Mobile menu (hamburger) works",
+        "Smooth scroll behavior"
+      ],
+      "status": "DONE"
+    }
+  ],
+  "status": "IN_PROGRESS",
+  "updated_at": "2026-08-20 11:23:58"
+}

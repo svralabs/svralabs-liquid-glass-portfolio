@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Web Development",
+    "description": "Custom web applications tailored to your needs.",
+    "icon": "code"
+  },
+  {
+    "id": 2,
+    "title": "UI/UX Design",
+    "description": "Intuitive and visually appealing user interfaces.",
+    "icon": "palette"
+  },
+  {
+    "id": 3,
+    "title": "Mobile Development",
+    "description": "Cross-platform mobile applications for iOS and Android.",
+    "icon": "smartphone"
+  },
+  {
+    "id": 4,
+    "title": "Consulting",
+    "description": "Expert advice to help you make informed decisions.",
+    "icon": "lightbulb"
+  }
+]
