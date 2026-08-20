@@ -4,22 +4,22 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Work from './pages/Work';
-import Landing from './pages/Landing';
-import Services from './pages/Services';
-import PortfolioHome from './pages/PortfolioHome';
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
+import HomePage from './pages/HomePage';
+import LandingPage from './pages/LandingPage';
+import WorkPage from './pages/WorkPage';
 
 function ScreenBar() {
   const loc = useLocation();
   const navs = [
-    { path: '/', label: 'Contact' },
-    { path: '/about', label: 'About' },
-    { path: '/work', label: 'Work' },
-    { path: '/landing', label: 'Landing' },
-    { path: '/services', label: 'Services' },
-    { path: '/portfoliohome', label: 'PortfolioHome' }
+    { path: '/', label: 'ServicesPage' },
+    { path: '/contactpage', label: 'ContactPage' },
+    { path: '/aboutpage', label: 'AboutPage' },
+    { path: '/homepage', label: 'HomePage' },
+    { path: '/landingpage', label: 'LandingPage' },
+    { path: '/workpage', label: 'WorkPage' }
   ];
 
   return (
@@ -55,13 +55,13 @@ export default function App() {
               <ScreenBar />
               <div className="pt-10 min-h-screen">
                 <Routes>
-                  <Route path='/' element={<Contact />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/work' element={<Work />} />
-        <Route path='/landing' element={<Landing />} />
-        <Route path='/services' element={<Services />} />
-        <Route path='/portfoliohome' element={<PortfolioHome />} />
-                  <Route path="*" element={<Contact />} />
+                  <Route path='/' element={<ServicesPage />} />
+        <Route path='/contactpage' element={<ContactPage />} />
+        <Route path='/aboutpage' element={<AboutPage />} />
+        <Route path='/homepage' element={<HomePage />} />
+        <Route path='/landingpage' element={<LandingPage />} />
+        <Route path='/workpage' element={<WorkPage />} />
+                  <Route path="*" element={<ServicesPage />} />
                 </Routes>
               </div>
             </BrowserRouter>

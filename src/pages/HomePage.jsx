@@ -1,21 +1,19 @@
-import { useState } from 'react';
-import {Globe as ArrowUpRight, Folder, Globe as Terminal, Mail} from 'lucide-react';
-import ProjectCard from '../components/ProjectCard';
-import projectsData from '../data/projects.json';
+import {Globe as ArrowUpRight, Folder, Globe as Terminal} from 'lucide-react';
 
-export default function PortfolioHome() {
-  const [activeFilter, setActiveFilter] = useState('All');
+const projects = [
+  { title: 'Aster', description: 'Design system & component library', tags: ['React', 'TypeScript', 'CSS'] },
+  { title: 'Liquid Glass', description: 'UI component library', tags: ['Vue', 'Sass', 'JavaScript'] },
+  { title: 'Portfolio', description: 'Personal website', tags: ['Next.js', 'Tailwind', 'Framer Motion'] },
+  { title: 'Dashboard', description: 'Analytics platform', tags: ['Angular', 'Material UI', 'D3.js'] },
+  { title: 'E-commerce', description: 'Online store', tags: ['Shopify', 'Liquid', 'JavaScript'] },
+  { title: 'Mobile App', description: 'Cross-platform application', tags: ['React Native', 'Redux', 'Firebase'] },
+];
 
-  const filteredProjects = activeFilter === 'All'
-    ? projectsData
-    : projectsData.filter(project =>
-        project.tags.includes(activeFilter)
-      );
+const tags = ['React', 'TypeScript', 'Vue', 'Sass', 'JavaScript', 'Next.js', 'Tailwind', 'Framer Motion', 'Angular', 'Material UI', 'D3.js', 'Shopify', 'Liquid', 'React Native', 'Redux', 'Firebase'];
 
-  const allTags = [...new Set(projectsData.flatMap(project => project.tags))];
-
+export default function HomePage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-black">
       {/* Background */}
       <div className="fixed inset-0 z-0 bg-black">
         <img
@@ -29,7 +27,7 @@ export default function PortfolioHome() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 lg:px-8 lg:py-8">
-        {/* Nav */}
+        {/* Navigation */}
         <nav className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <span className="liquid-glass-strong flex h-8 w-8 items-center justify-center rounded-lg">
@@ -47,16 +45,16 @@ export default function PortfolioHome() {
             </div>
             <button className="liquid-glass-strong flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-transform hover:scale-105 active:scale-95">
               <span className="glass-content flex items-center gap-2">
-                <Mail className="h-4 w-4" />
+                <span className="material-symbols-outlined">mail</span>
                 Get in touch
               </span>
             </button>
           </div>
         </nav>
 
-        {/* Bento Grid */}
+        {/* Portfolio Grid */}
         <div className="mt-6 grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[200px]">
-          {/* Hero */}
+          {/* Hero Card */}
           <div className="liquid-glass-strong flex flex-col justify-between rounded-[1.75rem] p-7 md:col-span-2 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1">
             <div className="glass-content flex h-full flex-col justify-between">
               <div>
@@ -83,7 +81,7 @@ export default function PortfolioHome() {
             </div>
           </div>
 
-          {/* Visual card */}
+          {/* Visual Card */}
           <div className="liquid-glass relative overflow-hidden rounded-[1.75rem] lg:col-start-3 lg:row-start-1 lg:row-span-2">
             <img
               alt="Editor with source code"
@@ -99,7 +97,7 @@ export default function PortfolioHome() {
             </div>
           </div>
 
-          {/* Status card */}
+          {/* Status Card */}
           <div className="liquid-glass flex flex-col justify-between rounded-[1.75rem] p-6 lg:col-start-4 lg:row-start-1">
             <div className="glass-content flex h-full flex-col justify-between">
               <div className="flex items-center gap-2.5">
@@ -113,7 +111,7 @@ export default function PortfolioHome() {
             </div>
           </div>
 
-          {/* Stack card */}
+          {/* Stack Card */}
           <div className="liquid-glass rounded-[1.75rem] p-6 lg:col-start-4 lg:row-start-2">
             <div className="glass-content">
               <div className="flex items-center gap-2">
@@ -130,7 +128,7 @@ export default function PortfolioHome() {
             </div>
           </div>
 
-          {/* Work card */}
+          {/* Work Card */}
           <div className="liquid-glass rounded-[1.75rem] p-6 md:col-span-2 lg:col-span-2 lg:col-start-1 lg:row-start-3" id="work">
             <div className="glass-content">
               <div className="flex items-center justify-between">
@@ -140,34 +138,31 @@ export default function PortfolioHome() {
                 </div>
                 <a className="text-xs text-white/50 transition-colors hover:text-white" href="#">All projects</a>
               </div>
-
-              {/* Filter tags */}
-              <div className="mt-4 flex flex-wrap gap-2">
-                <button
-                  className={`rounded-full px-3 py-1 text-xs ${activeFilter === 'All' ? 'bg-white/15 text-white' : 'bg-white/10 text-white/80'}`}
-                  onClick={() => setActiveFilter('All')}
-                >
-                  All
-                </button>
-                {allTags.map((tag, index) => (
-                  <button
-                    key={index}
-                    className={`rounded-full px-3 py-1 text-xs ${activeFilter === tag ? 'bg-white/15 text-white' : 'bg-white/10 text-white/80'}`}
-                    onClick={() => setActiveFilter(tag)}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-
-              {/* Project grid */}
-              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-                {filteredProjects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
+              <div className="mt-4 flex flex-col divide-y divide-white/10">
+                {projects.map((project, index) => (
+                  <a key={index} className="group flex items-center justify-between py-2.5 transition-transform hover:translate-x-1" href="#">
+                    <span className="flex items-baseline gap-3">
+                      <span className="text-sm font-medium text-white">{project.title}</span>
+                      <span className="text-xs text-white/50">{project.description}</span>
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-white/50 transition-colors group-hover:text-white" />
+                  </a>
                 ))}
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Filter Tags */}
+        <div className="mt-6 flex flex-wrap gap-2">
+          {tags.map((tag, index) => (
+            <button
+              key={index}
+              className="liquid-glass rounded-full px-3 py-1 text-sm text-white/80 transition-colors hover:text-white hover:bg-white/10"
+            >
+              {tag}
+            </button>
+          ))}
         </div>
       </div>
     </div>

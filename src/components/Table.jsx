@@ -1,19 +1,33 @@
 import React from 'react';
-export default function Table({ headers = [], rows = [], className = '' }) {
+
+const Table = ({ data, columns, className = '', ...props }) => {
+  const baseClasses = 'w-full border-collapse';
+  const tableClasses = `${baseClasses} ${className}`;
+
   return (
-    <div className={`overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 ${className}`}>
-      <table className="w-full text-left text-sm">
-        <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-500 font-semibold border-b border-slate-200 dark:border-slate-800">
-          <tr>{headers.map((h, i) => <th key={i} className="p-3.5">{h}</th>)}</tr>
-        </thead>
-        <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-          {rows.map((row, rIdx) => (
-            <tr key={rIdx} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-              {row.map((cell, cIdx) => <td key={cIdx} className="p-3.5">{cell}</td>)}
-            </tr>
+    <table className={tableClasses} {...props}>
+      <thead>
+        <tr className="bg-mist/5">
+          {columns.map((column, index) => (
+            <th key={index} className="px-6 py-3 text-left text-xs font-kanit font-bold uppercase tracking-wider text-mist">
+              {column.header}
+            </th>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, rowIndex) => (
+          <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-background' : 'bg-mist/5'}>
+            {columns.map((column, colIndex) => (
+              <td key={colIndex} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-on-background">
+                {row[column.accessor]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
-}
+};
+
+export default Table;

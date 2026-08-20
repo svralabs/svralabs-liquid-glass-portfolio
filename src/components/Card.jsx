@@ -1,10 +1,20 @@
 import React from 'react';
-export default function Card({ children, className = '', title, subtitle, ...props }) {
+
+const Card = ({ children, variant = 'default', className = '', ...props }) => {
+  const baseClasses = 'rounded-lg overflow-hidden';
+  const variantClasses = {
+    default: 'bg-background border border-mist/10',
+    elevated: 'bg-background border border-mist/10 shadow-lg',
+    outlined: 'border-2 border-mist/30',
+  };
+
+  const cardClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
+
   return (
-    <div className={`bg-white dark:bg-[#1e1e24] rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 ${className}`} {...props}>
-      {title && <h3 className="font-bold text-lg text-slate-800 dark:text-white mb-1">{title}</h3>}
-      {subtitle && <p className="text-sm text-slate-500 mb-4">{subtitle}</p>}
+    <div className={cardClasses} {...props}>
       {children}
     </div>
   );
-}
+};
+
+export default Card;

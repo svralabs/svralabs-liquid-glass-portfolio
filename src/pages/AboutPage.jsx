@@ -1,13 +1,42 @@
 import { useState, useEffect } from 'react';
-import SkillMarquee from '../components/SkillMarquee';
-import skillsData from '../data/skills.json';
 
-export default function About() {
-  const [skills, setSkills] = useState([]);
+export default function AboutPage() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      text: "Sugi's work is exceptional. The attention to detail and the smooth user experience he creates are unmatched.",
+      author: "Alex Johnson",
+      role: "CEO, TechCorp"
+    },
+    {
+      text: "I've never seen a developer work so efficiently. The code is clean, the performance is outstanding.",
+      author: "Maria Garcia",
+      role: "CTO, Innovatech"
+    },
+    {
+      text: "Sugi transformed our product. The results speak for themselves. Highly recommended.",
+      author: "James Wilson",
+      role: "Founder, StartupX"
+    }
+  ];
 
   useEffect(() => {
-    setSkills(skillsData);
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
+
+  const skills = [
+    { name: "TypeScript", level: 90 },
+    { name: "React", level: 85 },
+    { name: "Node", level: 80 },
+    { name: "Go", level: 75 },
+    { name: "Rust", level: 70 },
+    { name: "Postgres", level: 85 },
+    { name: "Palette", level: 75 }
+  ];
 
   return (
     <div className="relative min-h-screen bg-black">
@@ -77,34 +106,36 @@ export default function About() {
               <p className="mt-5 text-sm leading-relaxed text-white/60">
                 I've spent the last six years shipping products across startups and studios — equally at home in a design file and a terminal. I care about the details users never notice: the frame that never drops, the state that never gets stuck, the API that just makes sense.
               </p>
-
-              {/* Skills Marquee */}
+              {/* Skills Chart */}
               <div className="mt-6">
-                <SkillMarquee skills={skills} />
+                {skills.map((skill) => (
+                  <div key={skill.name} className="mb-2">
+                    <div className="flex justify-between text-xs text-white/60">
+                      <span>{skill.name}</span>
+                      <span>{skill.level}%</span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-white/10">
+                      <div
+                        className="h-full rounded-full bg-white/30"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Timeline Column */}
+          {/* Testimonials Column */}
           <div className="liquid-glass rounded-[2rem] p-8 lg:col-span-7">
             <div className="glass-content">
-              <p className="font-mono text-xs uppercase tracking-widest text-white/60">Timeline</p>
-              <div className="mt-5 flex flex-col divide-y divide-white/10">
-                <div className="flex items-baseline gap-5 py-3">
-                  <span className="font-mono text-sm text-white/40">2026</span>
-                  <span className="text-sm text-white/85">Independent — product &amp; platform engineering</span>
+              <p className="font-mono text-xs uppercase tracking-widest text-white/60">Testimonials</p>
+              <div className="mt-5">
+                <div className="text-sm text-white/85">
+                  "{testimonials[currentTestimonial].text}"
                 </div>
-                <div className="flex items-baseline gap-5 py-3">
-                  <span className="font-mono text-sm text-white/40">2023</span>
-                  <span className="text-sm text-white/85">Senior engineer, realtime collaboration team</span>
-                </div>
-                <div className="flex items-baseline gap-5 py-3">
-                  <span className="font-mono text-sm text-white/40">2020</span>
-                  <span className="text-sm text-white/85">Frontend engineer, design systems</span>
-                </div>
-                <div className="flex items-baseline gap-5 py-3">
-                  <span className="font-mono text-sm text-white/40">2018</span>
-                  <span className="text-sm text-white/85">First commit, first startup</span>
+                <div className="mt-3 text-xs text-white/60">
+                  - {testimonials[currentTestimonial].author}, {testimonials[currentTestimonial].role}
                 </div>
               </div>
             </div>
@@ -113,6 +144,15 @@ export default function About() {
 
         {/* Footer */}
         <p className="mt-10 text-center font-mono text-[11px] text-white/40">© 2026 sugi.dev — built at 60fps.</p>
+      </div>
+
+      {/* Marquee */}
+      <div className="fixed bottom-0 left-0 right-0 z-20 overflow-hidden whitespace-nowrap bg-black/80 py-2">
+        <div className="animate-marquee inline-block">
+          <span className="mx-4 text-sm font-medium text-white">Available for freelance work</span>
+          <span className="mx-4 text-sm font-medium text-white">Available for freelance work</span>
+          <span className="mx-4 text-sm font-medium text-white">Available for freelance work</span>
+        </div>
       </div>
     </div>
   );

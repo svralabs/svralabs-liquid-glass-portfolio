@@ -1,40 +1,27 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 
-/**
- * Badge component with multiple variants
- * @param {Object} props - Component props
- * @param {string} props.children - Badge text
- * @param {string} [props.variant='primary'] - Badge variant: 'primary', 'secondary', 'success', 'warning', 'danger'
- * @param {string} [props.size='md'] - Badge size: 'sm', 'md', 'lg'
- */
-export default function Badge({
-  children,
-  variant = 'primary',
-  size = 'md',
-}) {
-  const baseClasses = 'inline-flex items-center font-medium rounded-full';
+const Badge = ({ children, variant = 'primary', size = 'md', className = '', ...props }) => {
+  const baseClasses = 'inline-flex items-center justify-center rounded-full font-kanit font-bold uppercase tracking-wider';
   const variantClasses = {
-    primary: 'bg-blue-100 text-blue-800',
-    secondary: 'bg-gray-100 text-gray-800',
-    success: 'bg-green-100 text-green-800',
-    warning: 'bg-yellow-100 text-yellow-800',
-    danger: 'bg-red-100 text-red-800',
+    primary: 'bg-ember text-white',
+    secondary: 'bg-ink-soft text-on-background',
+    outline: 'border-2 border-ember text-ember',
+    outlineMist: 'border-2 border-mist/30 text-mist',
+    mist: 'bg-mist text-background',
   };
   const sizeClasses = {
-    sm: 'px-2 py-0.5 text-xs',
-    md: 'px-2.5 py-0.5 text-sm',
-    lg: 'px-3 py-1 text-base',
+    sm: 'px-3 py-1 text-xs',
+    md: 'px-4 py-1.5 text-sm',
+    lg: 'px-5 py-2 text-base',
   };
 
+  const badgeClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+
   return (
-    <span className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`}>
+    <span className={badgeClasses} {...props}>
       {children}
     </span>
   );
-}
-
-Badge.propTypes = {
-  children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger']),
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
+
+export default Badge;
