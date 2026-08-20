@@ -1,28 +1,32 @@
-import React from 'react';
-import SkillsGrid from '../components/SkillsGrid';
+import { useState, useEffect } from 'react';
+import SkillMarquee from '../components/SkillMarquee';
+import skillsData from '../data/skills.json';
 
-export default function AboutPage() {
-  const timelineItems = [
-    { year: '2026', description: 'Independent — product & platform engineering' },
-    { year: '2023', description: 'Senior engineer, realtime collaboration team' },
-    { year: '2020', description: 'Frontend engineer, design systems' },
-    { year: '2018', description: 'First commit, first startup' }
-  ];
+export default function About() {
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    setSkills(skillsData);
+  }, []);
 
   return (
-    <>
+    <div className="relative min-h-screen bg-black">
       {/* Background */}
       <div className="fixed inset-0 z-0 bg-black">
-        <img alt="" className="bg-photo h-full w-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+        <img
+          alt=""
+          className="bg-photo h-full w-full object-cover"
+          src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+        />
         <div className="bg-sheen absolute inset-0"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 py-6 lg:px-8 lg:py-8">
-        {/* Nav */}
+        {/* Navigation */}
         <nav className="flex items-center justify-between">
-          <a className="flex items-center gap-2.5" href="hero.html">
+          <a className="flex items-center gap-2.5" href="/">
             <span className="liquid-glass-strong flex h-8 w-8 items-center justify-center rounded-lg">
               <span className="glass-content font-mono text-sm font-bold tracking-tighter text-white">s/</span>
             </span>
@@ -31,13 +35,13 @@ export default function AboutPage() {
           <div className="flex items-center gap-3">
             <div className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 sm:flex">
               <span className="glass-content flex items-center gap-1">
-                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="hero.html">Home</a>
-                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="services.html">Services</a>
-                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="work.html">Work</a>
-                <a className="rounded-full px-3 py-1 text-sm text-white transition-colors hover:text-white" href="about.html">About</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="/">Home</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="/services">Services</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white/70 transition-colors hover:text-white" href="/work">Work</a>
+                <a className="rounded-full px-3 py-1 text-sm text-white transition-colors hover:text-white" href="/about">About</a>
               </span>
             </div>
-            <a className="liquid-glass-strong flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-transform hover:scale-105 active:scale-95" href="contact.html">
+            <a className="liquid-glass-strong flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-transform hover:scale-105 active:scale-95" href="/contact">
               <span className="glass-content flex items-center gap-2">
                 <span className="material-symbols-outlined h-4 w-4">mail</span>
                 Get in touch
@@ -50,7 +54,11 @@ export default function AboutPage() {
         <main className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Image Column */}
           <div className="liquid-glass relative overflow-hidden rounded-[2rem] lg:col-span-5 lg:row-span-2 min-h-[320px]">
-            <img alt="Workspace" className="img-mono absolute inset-0 h-full w-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+            <img
+              alt="Workspace"
+              className="img-mono absolute inset-0 h-full w-full object-cover"
+              src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
             <div className="glass-content absolute inset-0 flex flex-col justify-end p-7">
               <p className="font-mono text-xs uppercase tracking-widest text-white/60">Based in</p>
@@ -69,7 +77,11 @@ export default function AboutPage() {
               <p className="mt-5 text-sm leading-relaxed text-white/60">
                 I've spent the last six years shipping products across startups and studios — equally at home in a design file and a terminal. I care about the details users never notice: the frame that never drops, the state that never gets stuck, the API that just makes sense.
               </p>
-              <SkillsGrid />
+
+              {/* Skills Marquee */}
+              <div className="mt-6">
+                <SkillMarquee skills={skills} />
+              </div>
             </div>
           </div>
 
@@ -78,12 +90,22 @@ export default function AboutPage() {
             <div className="glass-content">
               <p className="font-mono text-xs uppercase tracking-widest text-white/60">Timeline</p>
               <div className="mt-5 flex flex-col divide-y divide-white/10">
-                {timelineItems.map((item, index) => (
-                  <div key={index} className="flex items-baseline gap-5 py-3">
-                    <span className="font-mono text-sm text-white/40">{item.year}</span>
-                    <span className="text-sm text-white/85">{item.description}</span>
-                  </div>
-                ))}
+                <div className="flex items-baseline gap-5 py-3">
+                  <span className="font-mono text-sm text-white/40">2026</span>
+                  <span className="text-sm text-white/85">Independent — product &amp; platform engineering</span>
+                </div>
+                <div className="flex items-baseline gap-5 py-3">
+                  <span className="font-mono text-sm text-white/40">2023</span>
+                  <span className="text-sm text-white/85">Senior engineer, realtime collaboration team</span>
+                </div>
+                <div className="flex items-baseline gap-5 py-3">
+                  <span className="font-mono text-sm text-white/40">2020</span>
+                  <span className="text-sm text-white/85">Frontend engineer, design systems</span>
+                </div>
+                <div className="flex items-baseline gap-5 py-3">
+                  <span className="font-mono text-sm text-white/40">2018</span>
+                  <span className="text-sm text-white/85">First commit, first startup</span>
+                </div>
               </div>
             </div>
           </div>
@@ -92,6 +114,6 @@ export default function AboutPage() {
         {/* Footer */}
         <p className="mt-10 text-center font-mono text-[11px] text-white/40">© 2026 sugi.dev — built at 60fps.</p>
       </div>
-    </>
+    </div>
   );
 }

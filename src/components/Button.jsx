@@ -1,35 +1,52 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-const Button = ({ children, variant = 'primary', size = 'md', disabled = false, icon, iconPosition = 'right' }) => {
-  const baseClasses = 'rounded-md font-kanit font-bold uppercase tracking-wider transition-all active:scale-95';
-  const sizeClasses = {
-    sm: 'px-6 py-2 text-sm',
-    md: 'px-8 py-3.5',
-    lg: 'px-10 py-5 text-lg'
-  };
+/**
+ * Button component with multiple variants
+ * @param {Object} props - Component props
+ * @param {string} props.children - Button text
+ * @param {string} [props.variant='primary'] - Button variant: 'primary', 'secondary', 'outline', 'ghost', 'link'
+ * @param {string} [props.size='md'] - Button size: 'sm', 'md', 'lg'
+ * @param {boolean} [props.disabled=false] - Disabled state
+ * @param {function} [props.onClick] - Click handler
+ */
+export default function Button({
+  children,
+  variant = 'primary',
+  size = 'md',
+  disabled = false,
+  onClick,
+}) {
+  const baseClasses = 'font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200';
   const variantClasses = {
-    primary: 'bg-ember text-white ember-glow hover:-translate-y-1',
-    secondary: 'bg-ink-soft text-on-background border border-mist/10 hover:bg-mist/10',
-    ghost: 'bg-transparent text-on-background border border-transparent hover:border-mist/20 hover:bg-mist/5',
-    outline: 'bg-transparent text-ember border-2 border-ember hover:bg-ember hover:text-white',
-    outlineMist: 'bg-transparent text-mist border-2 border-mist/30 hover:border-mist hover:bg-mist/5',
-    mist: 'bg-mist text-background hover:bg-white'
+    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+    secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500',
+    outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500',
+    ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
+    link: 'text-blue-600 hover:text-blue-800 focus:ring-blue-500',
+  };
+  const sizeClasses = {
+    sm: 'px-3 py-1.5 text-sm',
+    md: 'px-4 py-2 text-base',
+    lg: 'px-6 py-3 text-lg',
   };
 
   const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : '';
 
-  const iconClasses = 'material-symbols-outlined text-lg';
-
   return (
     <button
-      className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${disabledClasses}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses}`}
       disabled={disabled}
+      onClick={onClick}
     >
-      {icon && iconPosition === 'left' && <span className={iconClasses}>{icon}</span>}
       {children}
-      {icon && iconPosition === 'right' && <span className={iconClasses}>{icon}</span>}
     </button>
   );
-};
+}
 
-export default Button;
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'ghost', 'link']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+};

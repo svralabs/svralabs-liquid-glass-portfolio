@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Aster",
+    "description": "Design system & component library",
+    "tags": ["Design", "React", "TypeScript"],
+    "imageUrl": "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+  },
+  {
+    "id": 2,
+    "title": "Liquid Glass",
+    "description": "UI component library",
+    "tags": ["UI", "CSS", "JavaScript"],
+    "imageUrl": "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+  },
+  {
+    "id": 3,
+    "title": "Portfolio",
+    "description": "Personal portfolio website",
+    "tags": ["Web", "React", "Tailwind"],
+    "imageUrl": "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+  },
+  {
+    "id": 4,
+    "title": "E-commerce",
+    "description": "Online store platform",
+    "tags": ["E-commerce", "Node", "MongoDB"],
+    "imageUrl": "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+  },
+  {
+    "id": 5,
+    "title": "Dashboard",
+    "description": "Analytics dashboard",
+    "tags": ["Data", "React", "D3"],
+    "imageUrl": "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+  },
+  {
+    "id": 6,
+    "title": "Blog",
+    "description": "Content management system",
+    "tags": ["CMS", "Next.js", "Markdown"],
+    "imageUrl": "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"
+  }
+]

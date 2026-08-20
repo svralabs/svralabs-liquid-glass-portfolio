@@ -1,12 +1,6 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
-  const stats = [
-    { label: 'Experience', value: '6+ Years', description: 'Shipping Excellence' },
-    { label: 'Output', value: '40+ Projects', description: 'Concept to Scale' },
-    { label: 'Base', value: 'Tokyo', description: 'GMT+9' },
-  ];
-
   return (
     <section className="min-h-screen flex flex-col items-center justify-center pt-32 text-center">
       <div className="mb-6 py-1 px-3 rounded-full border border-white/10 bg-white/5 inline-block">
@@ -20,17 +14,25 @@ export default function HeroSection() {
         Specializing in high-performance digital interfaces that bridge the gap between human intuition and technical excellence.
       </p>
       <div className="flex gap-4">
-        <a className="px-8 py-4 rounded-full bg-primary text-on-primary font-medium hover:opacity-90 transition-opacity" href="#work">View Portfolio</a>
-        <a className="px-8 py-4 rounded-full liquid-glass text-primary font-medium hover:bg-white/10 transition-all" href="#about">My Philosophy</a>
+        <Link to="#work" className="px-8 py-4 rounded-full bg-primary text-on-primary font-medium hover:opacity-90 transition-opacity">View Portfolio</Link>
+        <Link to="#about" className="px-8 py-4 rounded-full liquid-glass text-primary font-medium hover:bg-white/10 transition-all">My Philosophy</Link>
       </div>
       <div className="mt-24 w-full max-w-4xl grid grid-cols-2 md:grid-cols-3 gap-8 py-10 liquid-glass rounded-[1.75rem]">
-        {stats.map((stat, index) => (
-          <div key={index} className={`flex flex-col items-center ${index > 0 ? 'border-x border-white/10' : ''}`}>
-            <span className="font-code-label text-code-label text-outline uppercase mb-2">{stat.label}</span>
-            <span className="font-headline-md text-headline-md text-primary">{stat.value}</span>
-            <span className="font-code-sm text-code-sm text-on-surface-variant mt-1">{stat.description}</span>
-          </div>
-        ))}
+        <div className="flex flex-col items-center">
+          <span className="font-code-label text-code-label text-outline uppercase mb-2">Experience</span>
+          <span className="font-headline-md text-headline-md text-primary">6+ Years</span>
+          <span className="font-code-sm text-code-sm text-on-surface-variant mt-1">Shipping Excellence</span>
+        </div>
+        <div className="flex flex-col items-center border-x border-white/10">
+          <span className="font-code-label text-code-label text-outline uppercase mb-2">Output</span>
+          <span className="font-headline-md text-headline-md text-primary">40+ Projects</span>
+          <span className="font-code-sm text-code-sm text-on-surface-variant mt-1">Concept to Scale</span>
+        </div>
+        <div className="flex flex-col items-center col-span-2 md:col-span-1">
+          <span className="font-code-label text-code-label text-outline uppercase mb-2">Base</span>
+          <span className="font-headline-md text-headline-md text-primary">Tokyo</span>
+          <span className="font-code-sm text-code-sm text-on-surface-variant mt-1">GMT+9</span>
+        </div>
       </div>
     </section>
   );
