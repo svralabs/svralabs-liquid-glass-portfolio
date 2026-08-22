@@ -1,22 +1,24 @@
 {
-  "project_name": "svralabs-liquid-glass-portfolio",
-  "architecture_summary": "Modular React app. Pages in src/pages/. Shared components in src/components/. Static assets in public/. Tailwind CSS for styling. React Router for navigation. No state management library (useState/useReducer suffice).",
+  "project_name": "svralabs-sugidev-portfolio-v2",
+  "architecture_summary": "Modular React SPA. Pages in src/pages/. Shared components in src/components/. Tailwind CSS for styling. React Router v6 for navigation. No state management lib (useState/useReducer suffice).",
   "tickets": [
     {
       "id": "TASK-001",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create LandingPage component from sugi.dev_landing_page_integrated",
-      "source_screen": "sugi.dev_landing_page_integrated",
-      "description": "Convert Stitch HTML to React. Extract hero section, marquee, CTA buttons. Preserve liquid glass effect (CSS backdrop-filter).",
+      "title": "Landing hero page component (src/pages/HeroLanding.jsx)",
+      "source_screen": "sugidev_hero_landing",
+      "description": "Convert Stitch HTML to React. Extract reusable HeroText, HeroImage components. Preserve exact layout, typography, animations. Use Tailwind classes from design tokens.",
       "target_files": [
-        "src/pages/LandingPage.jsx"
+        "src/pages/HeroLanding.jsx",
+        "src/components/HeroText.jsx",
+        "src/components/HeroImage.jsx"
       ],
       "acceptance_criteria": [
         "Pixel-perfect match to Stitch screen",
-        "Responsive across breakpoints (mobile, tablet, desktop)",
-        "Liquid glass effect visible in supported browsers",
-        "All links/buttons functional (route to # for now)"
+        "Mobile-responsive breakpoints preserved",
+        "Animation timings match design spec",
+        "No external dependencies added"
       ],
       "status": "DONE"
     },
@@ -24,17 +26,18 @@
       "id": "TASK-002",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create HomePage component from sugi.dev_portfolio_home_final",
-      "source_screen": "sugi.dev_portfolio_home_final",
-      "description": "Convert Stitch HTML. Extract portfolio grid, project cards, filter tags. Reuse liquid glass styling from LandingPage.",
+      "title": "Showcase explore section (src/pages/ShowcaseExplore.jsx)",
+      "source_screen": "sugidev_showcase_explore_section",
+      "description": "Build showcase grid. Extract ProjectCard component. Implement hover states, lazy loading for images. Use CSS Grid for layout.",
       "target_files": [
-        "src/pages/HomePage.jsx"
+        "src/pages/ShowcaseExplore.jsx",
+        "src/components/ProjectCard.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match to Stitch screen",
-        "Project cards hover effects match design",
-        "Filter tags interactive (visual feedback only, no backend)",
-        "Responsive grid layout"
+        "Grid layout matches design",
+        "Hover effects trigger on desktop, tap on mobile",
+        "Images lazy-load with placeholder",
+        "Accessible alt text for all images"
       ],
       "status": "DONE"
     },
@@ -42,17 +45,19 @@
       "id": "TASK-003",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create WorkPage component from sugi.dev_work_final",
-      "source_screen": "sugi.dev_work_final",
-      "description": "Convert Stitch HTML. Extract work timeline, project showcase, tech stack badges. Implement scroll-triggered animations for timeline items.",
+      "title": "Services & projects page (src/pages/ServicesProjects.jsx)",
+      "source_screen": "sugidev_services_projects",
+      "description": "Convert services accordion and projects timeline. Extract AccordionItem, TimelineItem components. Preserve animation curves from design.",
       "target_files": [
-        "src/pages/WorkPage.jsx"
+        "src/pages/ServicesProjects.jsx",
+        "src/components/AccordionItem.jsx",
+        "src/components/TimelineItem.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match to Stitch screen",
-        "Timeline animations trigger on scroll",
-        "Tech stack badges match design (reuse from badge_showcase_component_reference)",
-        "Responsive layout for work items"
+        "Accordion expands/collapses smoothly",
+        "Timeline items animate on scroll",
+        "Mobile layout stacks vertically",
+        "No layout shift during animations"
       ],
       "status": "DONE"
     },
@@ -60,17 +65,18 @@
       "id": "TASK-004",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create AboutPage component from sugi.dev_about_page",
-      "source_screen": "sugi.dev_about_page",
-      "description": "Convert Stitch HTML. Extract bio section, skills chart, testimonials. Implement marquee from sugidev_marquee_about_section.",
+      "title": "Marquee about section (src/pages/MarqueeAbout.jsx)",
+      "source_screen": "sugidev_marquee_about_section",
+      "description": "Implement infinite marquee text. Extract MarqueeText component. Use CSS animation for scroll effect. Preserve speed, pause on hover.",
       "target_files": [
-        "src/pages/AboutPage.jsx"
+        "src/pages/MarqueeAbout.jsx",
+        "src/components/MarqueeText.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match to Stitch screen",
-        "Skills chart responsive (CSS-only, no JS)",
-        "Testimonials carousel functional (auto-rotate every 5s)",
-        "Marquee animation smooth (60fps)"
+        "Marquee loops seamlessly",
+        "Text pauses on hover",
+        "Responsive font sizing",
+        "No JS animation (CSS only)"
       ],
       "status": "DONE"
     },
@@ -78,17 +84,18 @@
       "id": "TASK-005",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create ServicesPage component from services_sugi.dev",
-      "source_screen": "services_sugi.dev",
-      "description": "Convert Stitch HTML. Extract service cards, pricing table, inquiry form. Reuse components from devos_table_components_reference and project_inquiry_clean_background.",
+      "title": "Collection footer section (src/pages/CollectionFooter.jsx)",
+      "source_screen": "sugidev_collection_footer_section",
+      "description": "Build footer with social links, newsletter form. Extract NewsletterForm component. Validate email input client-side.",
       "target_files": [
-        "src/pages/ServicesPage.jsx"
+        "src/pages/CollectionFooter.jsx",
+        "src/components/NewsletterForm.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match to Stitch screen",
-        "Pricing table responsive (horizontal scroll on mobile)",
-        "Inquiry form fields validate client-side (required, email format)",
-        "Service cards hover effects match design"
+        "Form submits to placeholder endpoint",
+        "Email validation matches design error states",
+        "Social links open in new tab",
+        "Mobile layout stacks links"
       ],
       "status": "DONE"
     },
@@ -96,17 +103,20 @@
       "id": "TASK-006",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Create ContactPage component from contact_clean_background",
-      "source_screen": "contact_clean_background",
-      "description": "Convert Stitch HTML. Extract contact form, social links, map placeholder. Implement form validation and submission handler (mock API).",
+      "title": "Shared layout components (src/components/Layout.jsx)",
+      "source_screen": "",
+      "description": "Create shared layout wrapper. Include header, footer, scroll-to-top button. Use React context for theme if dark mode present in future screens.",
       "target_files": [
-        "src/pages/ContactPage.jsx"
+        "src/components/Layout.jsx",
+        "src/components/Header.jsx",
+        "src/components/Footer.jsx",
+        "src/components/ScrollToTop.jsx"
       ],
       "acceptance_criteria": [
-        "Pixel-perfect match to Stitch screen",
-        "Form validation for all fields (required, email format)",
-        "Mock API submission (console.log payload)",
-        "Social links open in new tab"
+        "Layout wraps all pages",
+        "Header sticky on scroll",
+        "Scroll-to-top button appears after 200px scroll",
+        "No layout shift on load"
       ],
       "status": "DONE"
     },
@@ -114,21 +124,18 @@
       "id": "TASK-007",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Extract shared components from component reference screens",
-      "source_screen": "button_showcase_component_reference,badge_showcase_component_reference,devos_table_components_reference",
-      "description": "Create reusable components: Button, Badge, Card, Table. Style variants match design system. Export from src/components/index.js.",
+      "title": "Design system tokens (src/styles/tokens.js)",
+      "source_screen": "",
+      "description": "Extract design tokens from Stitch screens. Colors, spacing, typography, shadows. Export as JS object for Tailwind config and direct use.",
       "target_files": [
-        "src/components/Button.jsx",
-        "src/components/Badge.jsx",
-        "src/components/Card.jsx",
-        "src/components/Table.jsx",
-        "src/components/index.js"
+        "src/styles/tokens.js",
+        "tailwind.config.js"
       ],
       "acceptance_criteria": [
-        "Components match Stitch reference screens exactly",
-        "All variants (primary, secondary, etc.) implemented",
-        "Props for size, color, disabled state",
-        "Storybook-style examples in comments"
+        "All colors match design hex values",
+        "Spacing tokens follow 4px scale",
+        "Typography tokens include font family, weight, size, line height",
+        "Shadow tokens match design blur/radius"
       ],
       "status": "DONE"
     },
@@ -138,24 +145,20 @@
       "model": "hermes-auto",
       "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
       "source_screen": "",
-      "description": "Create main App shell. Implement navigation bar with liquid glass effect. Set up React Router with routes for all pages. Add 404 page. Configure Tailwind CSS.",
+      "description": "Set up React Router. Create route config for all pages. Implement navigation bar with active state. Lazy-load page components. Add 404 fallback.",
       "target_files": [
         "src/App.jsx",
-        "src/components/Navbar.jsx",
-        "src/components/Footer.jsx",
-        "src/pages/NotFoundPage.jsx",
-        "src/index.css"
+        "src/routes.js"
       ],
       "acceptance_criteria": [
-        "Navigation bar matches design (sugidev_collection_footer_section for footer)",
-        "All routes functional (Landing, Home, Work, About, Services, Contact)",
-        "404 page styled consistently",
-        "Tailwind config includes custom colors/fonts from design",
-        "Responsive navigation (mobile menu on small screens)"
+        "All routes load correct page component",
+        "Navigation bar highlights active route",
+        "Lazy-loaded chunks load without layout shift",
+        "404 page matches design system"
       ],
       "status": "DONE"
     }
   ],
   "status": "IN_PROGRESS",
-  "updated_at": "2026-08-20 18:53:07"
+  "updated_at": "2026-08-20 10:51:06"
 }
